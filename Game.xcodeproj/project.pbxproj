@@ -15,6 +15,9 @@
 		9B28CCFA2225835500629347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCF82225835500629347 /* Main.storyboard */; };
 		9B28CCFC2225835700629347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFB2225835700629347 /* Assets.xcassets */; };
 		9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFD2225835700629347 /* LaunchScreen.storyboard */; };
+		9B28CD10222583DD00629347 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CD0D222583DD00629347 /* monster.png */; };
+		9B28CD11222583DD00629347 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CD0E222583DD00629347 /* player.png */; };
+		9B28CD132225867200629347 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CD122225867200629347 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		9B28CCFB2225835700629347 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B28CCFE2225835700629347 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B28CD002225835700629347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B28CD0D222583DD00629347 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		9B28CD0E222583DD00629347 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		9B28CD122225867200629347 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,9 @@
 				9B28CCF62225835500629347 /* GameViewController.swift */,
 				9B28CCF82225835500629347 /* Main.storyboard */,
 				9B28CCFB2225835700629347 /* Assets.xcassets */,
+				9B28CD122225867200629347 /* background.png */,
+				9B28CD0D222583DD00629347 /* monster.png */,
+				9B28CD0E222583DD00629347 /* player.png */,
 				9B28CCFD2225835700629347 /* LaunchScreen.storyboard */,
 				9B28CD002225835700629347 /* Info.plist */,
 			);
@@ -132,9 +141,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B28CCFA2225835500629347 /* Main.storyboard in Resources */,
+				9B28CD11222583DD00629347 /* player.png in Resources */,
 				9B28CCF12225835500629347 /* GameScene.sks in Resources */,
 				9B28CCFC2225835700629347 /* Assets.xcassets in Resources */,
 				9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */,
+				9B28CD132225867200629347 /* background.png in Resources */,
+				9B28CD10222583DD00629347 /* monster.png in Resources */,
 				9B28CCF32225835500629347 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
