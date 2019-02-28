@@ -16,8 +16,6 @@ class GameScene: SKScene {
     
 
     override func didMove(to view: SKView) {
-        //backgroundColor = UIColor.white
-        
         
         // Double Tap Recognizer
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(_:)))
@@ -118,23 +116,23 @@ class GameScene: SKScene {
         // Checking for triangles (Condition: upper/lower corner of triangle has to be 25% of grater/lower)
         if(midy > y1 && midy > y2){
             if(midy > (y2 + (y2*0.25))){
-                print("PREDICTED: Upper Triangle ^")
+                print("PREDICTED: Upper Triangle")
                 
             }
             
         }else if(midy < y1 && midy < y2){
             if(midy < (y2 + (y2*0.25))){
-                print("PREDICTED: Lower Triangle _")
+                print("PREDICTED: Lower Triangle")
             }
         
             
         // Checking for lines
         }else{
             if(differenceX > differenceY){
-                print("PREDICTED: Horizontal Line --")
+                print("PREDICTED: Horizontal Line")
                 
             }else if(differenceX <= differenceY){
-                print("PRIDICTED: Verticle Line |")
+                print("PRIDICTED: Verticle Line")
                 
             }
         }
