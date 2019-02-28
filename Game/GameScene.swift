@@ -64,7 +64,13 @@ class GameScene: SKScene {
         line.glowWidth = 20
         self.addChild(line)
         
+       
+        // Recognize Shape
+        recognizePath();
         
+        //print("Start: \(pathArray[0])   End: \(pathArray[pathArray.count - 1])")
+        
+     
         // Fade out line
         let fed:SKAction = SKAction.fadeOut(withDuration: 1)
         fed.timingMode = .easeIn
@@ -72,7 +78,6 @@ class GameScene: SKScene {
         line.run(SKAction.sequence([fed,remove]))
         
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches{ self.touchDown(atPoint: t.location(in: self))}
@@ -84,6 +89,75 @@ class GameScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches{ self.touchUp(atPoint: t.location(in: self))}
+    }
+    
+    
+    
+    // RECOGNIZE PATH
+    func recognizePath(){
+        
+        // Starting and ending points
+        let x1 = Double(round(1000*self.pathArray[0].x)/1000)
+        let y1 = Double(round(1000*self.pathArray[0].y)/1000)
+        
+        let midx = Double(round(1000*self.pathArray[pathArray.count/2-1].x)/1000)
+        let midy = Double(round(1000*self.pathArray[pathArray.count/2-1].y)/1000)
+        
+        let x2 = Double(round(1000*self.pathArray[pathArray.count - 1].x)/1000)
+        let y2 = Double(round(1000*self.pathArray[pathArray.count - 1].y)/1000)
+        
+        
+      
+        
+      
+        
+        // Check for horizontal and vertical line
+        var differenceX = x1 - x2
+        var differenceY = y1 - y2
+        // If difference is in negative then convert it into positive
+        if(differenceX < 0){
+            differenceX *= -1
+        }
+        
+        if(differenceY < 0){
+            differenceY *= -1
+        }
+        
+        
+        // Debuging
+//        print("X1: \(x1)  Y1: \(y1)")
+//        print("MIDX: \(midx)  MIDY: \(midy)")
+//        print("X2: \(x2)  Y2: \(y2)")
+//        print("DF: \(differenceX)   DY: \(differenceY)")
+
+
+        
+        
+        // Checking for triangles (Condition: upper/lower corner of triangle has to be 25% of grater/lower)
+        if(midy > y1 && midy > y2){
+            if(midy > (y2 + (y2*0.25))){
+                print("PREDICTED: Upper Triangle ^")
+                
+            }
+            
+        }else if(midy < y1 && midy < y2){
+            if(midy < (y2 + (y2*0.25))){
+                print("PREDICTED: Lower Triangle _")
+            }
+        
+            
+        // Checking for lines
+        }else{
+            if(differenceX > differenceY){
+                print("PREDICTED: Horizontal Line --")
+                
+            }else if(differenceX <= differenceY){
+                print("PRIDICTED: Verticle Line |")
+                
+            }
+        }
+        
+        
     }
 }
 
