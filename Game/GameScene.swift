@@ -9,7 +9,12 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene,SKPhysicsContactDelegate {
+    
+    
+    // REFERENCE TO SPRITES
+    var monster = SKSpriteNode()
+    var player = SKSpriteNode()
     
     // CANVAS VARIABLES
     var pathArray = [CGPoint]()
@@ -17,11 +22,31 @@ class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
         
+        self.physicsWorld.contactDelegate = self
+        
+        // Getting reference to player and monsters
+        self.monster = self.childNode(withName: "monster") as! SKSpriteNode
+        self.player = self.childNode(withName: "player") as! SKSpriteNode
+        
+        
         // Double Tap Recognizer
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(_:)))
         tapGR.delegate = self
         tapGR.numberOfTapsRequired = 2
         view.addGestureRecognizer(tapGR)
+    }
+    
+    
+    // COLLISION
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        let node1 = contact.bodyA.node
+        let node2 = contact.bodyB.node
+        
+        // Check for hit
+        if(node1?.name == "player" || node2?.name == "player"){
+                print("Collision Detected")
+        }
     }
     
     
@@ -84,6 +109,14 @@ class GameScene: SKScene {
         for t in touches{ self.touchUp(atPoint: t.location(in: self))}
     }
     
+    
+    
+    // UPDATE THINGS
+    override func update(_ currentTime: TimeInterval) {
+        
+        self.monster.position.x += 10
+        self.player.position.x -= 10
+    }
     
     
     // RECOGNIZE PATH
