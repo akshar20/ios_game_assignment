@@ -26,6 +26,13 @@ class GameScene: SKScene {
         // SETTING UP THE PLAYER
         player.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         addChild(player)
+        
+        
+        // Double Tap Recognizer
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(_:)))
+        tapGR.delegate = self
+        tapGR.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tapGR)
     }
     
     
@@ -66,8 +73,7 @@ class GameScene: SKScene {
         
        
         // Recognize Shape
-        recognizePath();
-        
+        recognizePath()
         //print("Start: \(pathArray[0])   End: \(pathArray[pathArray.count - 1])")
         
      
@@ -99,17 +105,12 @@ class GameScene: SKScene {
         // Starting and ending points
         let x1 = Double(round(1000*self.pathArray[0].x)/1000)
         let y1 = Double(round(1000*self.pathArray[0].y)/1000)
-        
-        let midx = Double(round(1000*self.pathArray[pathArray.count/2-1].x)/1000)
+
         let midy = Double(round(1000*self.pathArray[pathArray.count/2-1].y)/1000)
         
         let x2 = Double(round(1000*self.pathArray[pathArray.count - 1].x)/1000)
         let y2 = Double(round(1000*self.pathArray[pathArray.count - 1].y)/1000)
         
-        
-      
-        
-      
         
         // Check for horizontal and vertical line
         var differenceX = x1 - x2
@@ -123,15 +124,7 @@ class GameScene: SKScene {
             differenceY *= -1
         }
         
-        
-        // Debuging
-//        print("X1: \(x1)  Y1: \(y1)")
-//        print("MIDX: \(midx)  MIDY: \(midy)")
-//        print("X2: \(x2)  Y2: \(y2)")
-//        print("DF: \(differenceX)   DY: \(differenceY)")
-
-
-        
+    
         
         // Checking for triangles (Condition: upper/lower corner of triangle has to be 25% of grater/lower)
         if(midy > y1 && midy > y2){
@@ -162,6 +155,11 @@ class GameScene: SKScene {
 }
 
 
+extension GameScene: UIGestureRecognizerDelegate {
+    @objc func handleTap(_ gesture: UITapGestureRecognizer){
+        print("doubletapped")
+    }
+}
 
 
 
