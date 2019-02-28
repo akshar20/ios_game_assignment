@@ -11,21 +11,12 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    // REFERENCE PLAYER TO VARIABLE
-    let player = SKSpriteNode(imageNamed: "player")
-    
-    
     // CANVAS VARIABLES
     var pathArray = [CGPoint]()
     
 
     override func didMove(to view: SKView) {
-        
-        backgroundColor = UIColor.white
-        
-        // SETTING UP THE PLAYER
-        player.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        addChild(player)
+        //backgroundColor = UIColor.white
         
         
         // Double Tap Recognizer
@@ -73,9 +64,7 @@ class GameScene: SKScene {
         
        
         // Recognize Shape
-        recognizePath()
-        //print("Start: \(pathArray[0])   End: \(pathArray[pathArray.count - 1])")
-        
+        recognizePath()        
      
         // Fade out line
         let fed:SKAction = SKAction.fadeOut(withDuration: 1)
