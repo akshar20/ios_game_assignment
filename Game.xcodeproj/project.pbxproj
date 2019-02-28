@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B1ADB46222849D500EE5CB4 /* monster_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1ADB44222849D400EE5CB4 /* monster_right.png */; };
+		9B1ADB47222849D500EE5CB4 /* monster_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1ADB45222849D400EE5CB4 /* monster_left.png */; };
 		9B28CCEF2225835500629347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28CCEE2225835500629347 /* AppDelegate.swift */; };
 		9B28CCF12225835500629347 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCF02225835500629347 /* GameScene.sks */; };
 		9B28CCF32225835500629347 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCF22225835500629347 /* Actions.sks */; };
@@ -15,12 +17,13 @@
 		9B28CCFA2225835500629347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCF82225835500629347 /* Main.storyboard */; };
 		9B28CCFC2225835700629347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFB2225835700629347 /* Assets.xcassets */; };
 		9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFD2225835700629347 /* LaunchScreen.storyboard */; };
-		9B28CD10222583DD00629347 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CD0D222583DD00629347 /* monster.png */; };
 		9B59845122283EA80053EBE5 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9B59845022283EA80053EBE5 /* player.atlas */; };
 		9B598453222840F30053EBE5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B598452222840F30053EBE5 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B1ADB44222849D400EE5CB4 /* monster_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster_right.png; sourceTree = "<group>"; };
+		9B1ADB45222849D400EE5CB4 /* monster_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster_left.png; sourceTree = "<group>"; };
 		9B28CCEB2225835500629347 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B28CCEE2225835500629347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B28CCF02225835500629347 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -31,7 +34,6 @@
 		9B28CCFB2225835700629347 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B28CCFE2225835700629347 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B28CD002225835700629347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B28CD0D222583DD00629347 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 		9B59845022283EA80053EBE5 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 		9B598452222840F30053EBE5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +75,9 @@
 				9B28CCF62225835500629347 /* GameViewController.swift */,
 				9B28CCF82225835500629347 /* Main.storyboard */,
 				9B28CCFB2225835700629347 /* Assets.xcassets */,
+				9B1ADB45222849D400EE5CB4 /* monster_left.png */,
+				9B1ADB44222849D400EE5CB4 /* monster_right.png */,
 				9B59845022283EA80053EBE5 /* player.atlas */,
-				9B28CD0D222583DD00629347 /* monster.png */,
 				9B598452222840F30053EBE5 /* background.png */,
 				9B28CCFD2225835700629347 /* LaunchScreen.storyboard */,
 				9B28CD002225835700629347 /* Info.plist */,
@@ -143,11 +146,12 @@
 				9B59845122283EA80053EBE5 /* player.atlas in Resources */,
 				9B28CCFA2225835500629347 /* Main.storyboard in Resources */,
 				9B28CCF12225835500629347 /* GameScene.sks in Resources */,
+				9B1ADB46222849D500EE5CB4 /* monster_right.png in Resources */,
 				9B28CCFC2225835700629347 /* Assets.xcassets in Resources */,
 				9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */,
-				9B28CD10222583DD00629347 /* monster.png in Resources */,
 				9B598453222840F30053EBE5 /* background.png in Resources */,
 				9B28CCF32225835500629347 /* Actions.sks in Resources */,
+				9B1ADB47222849D500EE5CB4 /* monster_left.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -114,8 +114,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     // UPDATE THINGS
     override func update(_ currentTime: TimeInterval) {
         
-        self.monster.position.x += 10
-        self.player.position.x -= 10
+    
     }
     
     
