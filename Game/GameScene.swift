@@ -41,6 +41,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         self.player.constraints = [SKConstraint.positionX(SKRange(lowerLimit: 667, upperLimit: 191.531))]
         
         
+        
+        //************************************************************
+        //****************** TEMP CODE *******************************
+        //************************************************************
+        
+        
+        
         // Double Tap Recognizer
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(_:)))
         tapGR.delegate = self
@@ -228,9 +235,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     // Add Shape To Monster
     func addShapeToMonster(mons: SKSpriteNode){
-        
-        let randShape = "hline"
-        //let randShape = self.shapes.randomElement()
+    
+        let randShape = self.shapes.randomElement() as! String
         
         
         if(randShape == "hline"){
@@ -243,7 +249,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             pathToDraw.move(to: start)
             pathToDraw.addLine(to: end)
             hLine.path = pathToDraw
-            hLine.strokeColor = SKColor.red
+            hLine.strokeColor = SKColor.green
             hLine.lineWidth = 20
             hLine.glowWidth = 1.0
             hLine.name = "shape"
@@ -258,12 +264,78 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         }else if(randShape == "vline"){
             
+            let start = CGPoint(x: mons.position.x, y: mons.position.y + 50)
+            let end = CGPoint(x: mons.position.x, y:mons.position.y + 200)
+            
+            let vLine = SKShapeNode()
+            let pathToDraw = CGMutablePath()
+            pathToDraw.move(to: start)
+            pathToDraw.addLine(to: end)
+            vLine.path = pathToDraw
+            vLine.strokeColor = SKColor.red
+            vLine.lineWidth = 20
+            vLine.glowWidth = 1.0
+            vLine.name = "shape"
+            vLine.physicsBody?.isDynamic = true
+            addChild(vLine)
+            addChild(mons)
+            
+            
+            // Adding shape and monster to array
+            self.monsters_shape[randShape] = vLine
+            self.monsters_body[randShape] = mons
+            
             
         }else if(randShape == "upperBoom"){
             
             
+            let start = CGPoint(x: mons.position.x, y: mons.position.y)
+            let mid = CGPoint(x: mons.position.x + 100, y: mons.position.y + 50)
+            let end = CGPoint(x: mons.position.x + 200, y: mons.position.y - 50)
+            
+            let path = CGMutablePath()
+            path.move(to: start)
+            path.addLine(to: mid)
+            path.addLine(to: end)
+            
+            let upperB = SKShapeNode()
+            upperB.path = path
+            upperB.strokeColor = UIColor.magenta
+            upperB.lineWidth = 20
+            upperB.glowWidth = 1.0
+            upperB.physicsBody?.isDynamic = true
+            addChild(upperB)
+            addChild(mons)
+            
+            
+            // Adding shape and monster to array
+            self.monsters_shape[randShape] = upperB
+            self.monsters_body[randShape] = mons
+            
         }else if(randShape == "lowerBoom"){
             
+            let start = CGPoint(x: mons.position.x, y: mons.position.y)
+            let mid = CGPoint(x: mons.position.x + 100, y: mons.position.y - 50)
+            let end = CGPoint(x: mons.position.x + 200, y: mons.position.y + 50)
+            
+            let path = CGMutablePath()
+            path.move(to: start)
+            path.addLine(to: mid)
+            path.addLine(to: end)
+            
+            let lowerB = SKShapeNode()
+            lowerB.path = path
+            lowerB.strokeColor = UIColor.purple
+            lowerB.lineWidth = 20
+            lowerB.glowWidth = 1.0
+            lowerB.physicsBody?.isDynamic = true
+            addChild(lowerB)
+            addChild(mons)
+            
+            
+            // Adding shape and monster to array
+            self.monsters_shape[randShape] = lowerB
+            self.monsters_body[randShape] = mons
             
         }
         
