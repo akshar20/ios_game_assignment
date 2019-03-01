@@ -13,7 +13,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     // GAME SPRITES VARIABLES
     var monsterSpeed = 0.8
-    var monsters:[SKSpriteNode] = []
+    var monsters = [String: SKSpriteNode]()
     var monsterShapes:[SKSpriteNode] = []
     var shapes:[String] = ["hline", "vline", "upperBoom", "lowerBoom"]
     var player = SKSpriteNode()
@@ -222,14 +222,44 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         // put monster on screen
         addShapeToMonster(mons: monster)
-        addChild(monster)
-        
-        self.monsters.append(monster)
     }
     
     
     // Add Shape To Monster
     func addShapeToMonster(mons: SKSpriteNode){
+        
+        let randShape = "hline"
+        //let randShape = self.shapes.randomElement()
+        
+        
+        if(randShape == "hline"){
+            
+            let start = CGPoint(x: mons.position.x, y: mons.position.y + 50)
+            let end = CGPoint(x: mons.position.x + 200, y:mons.position.y + 50)
+            
+            let hLine = SKShapeNode()
+            let pathToDraw = CGMutablePath()
+            pathToDraw.move(to: start)
+            pathToDraw.addLine(to: end)
+            hLine.path = pathToDraw
+            hLine.strokeColor = SKColor.red
+            addChild(hLine)
+            addChild(mons)
+         
+            self.monsters[randShape] = mons
+        
+        }else if(randShape == "vline"){
+            
+            
+        }else if(randShape == "upperBoom"){
+            
+            
+        }else if(randShape == "lowerBoom"){
+            
+            
+        }
+        
+        
         
         
     }
@@ -259,7 +289,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Monster follows player
         let location = self.player.position
         
-        for mons in self.monsters {
+        for (_,mons) in self.monsters {
             //Aim
             let dx = (location.x) - mons.position.x
             let dy = (location.y) - mons.position.y
