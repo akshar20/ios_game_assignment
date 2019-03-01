@@ -11,22 +11,33 @@ import GameplayKit
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
     
+    // GAME SPRITES VARIABLES
+    var monsterSpeed = 0.8
+    var monsters:[SKSpriteNode] = []
+    var monsterShapes:[SKSpriteNode] = []
+    var shapes:[String] = ["hline", "vline", "upperBoom", "lowerBoom"]
+    var player = SKSpriteNode()
     
-    // REFERENCE TO SPRITES
-  //  var monster = SKSpriteNode()
- //   var player = SKSpriteNode()
     
     // CANVAS VARIABLES
     var pathArray = [CGPoint]()
+    
+    
+    // TIME TRACKING VARIABLES
+    private var lastUpdateTime : TimeInterval = 0
     
 
     override func didMove(to view: SKView) {
         
         self.physicsWorld.contactDelegate = self
+     
+        // Background
+        backgroundColor = UIColor.white
         
-        // Getting reference to player and monsters
-//        self.monster = self.childNode(withName: "monster") as! SKSpriteNode
-    //    self.player = self.childNode(withName: "player") as! SKSpriteNode
+        
+        // Get player reference
+        self.player = self.childNode(withName: "player") as! SKSpriteNode
+        self.player.constraints = [SKConstraint.positionX(SKRange(lowerLimit: 667, upperLimit: 191.531))]
         
         
         // Double Tap Recognizer
@@ -35,20 +46,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         tapGR.numberOfTapsRequired = 2
         view.addGestureRecognizer(tapGR)
     }
+
     
-    
-    // COLLISION
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        let node1 = contact.bodyA.node
-        let node2 = contact.bodyB.node
-        
-        // Check for hit
-        if(node1?.name == "player" || node2?.name == "player"){
-                print("Collision Detected")
-        }
-    }
-    
+    //************************************************************************************************
+    //******************************** CANVAS CODE STARTS ********************************************
+    //************************************************************************************************
     
     func touchDown(atPoint pos: CGPoint){
         pathArray.removeAll()
@@ -96,28 +98,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         line.run(SKAction.sequence([fed,remove]))
         
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches{ self.touchDown(atPoint: t.location(in: self))}
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches{ self.touchMoved(toPoint: t.location(in: self))}
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches{ self.touchUp(atPoint: t.location(in: self))}
-    }
-    
-    
-    
-    // UPDATE THINGS
-    override func update(_ currentTime: TimeInterval) {
-        
-    
-    }
-    
-    
+
     // RECOGNIZE PATH
     func recognizePath(){
         
@@ -171,6 +152,130 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         
     }
+    
+    
+    //**********************************************************************************************
+    //******************************** CANVAS CODE ENDS ********************************************
+    //**********************************************************************************************
+    
+    
+    
+    
+    
+    // TOUCH RECOGNIZER
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches{ self.touchDown(atPoint: t.location(in: self))}
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches{ self.touchMoved(toPoint: t.location(in: self))}
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches{ self.touchUp(atPoint: t.location(in: self))}
+    }
+    
+    
+    
+    
+    
+    
+    // COLLISION
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        let node1 = contact.bodyA.node
+        let node2 = contact.bodyB.node
+        
+        // Check for hit
+        if(node1?.name == "player" || node2?.name == "player"){
+            print("Collision Detected")
+        }
+    }
+    
+    
+    // Add Monster
+    func addMonster(){
+      
+        // generate a random (x,y) position for the monster
+        var randomX = arc4random_uniform(UInt32(size.width))
+        let randomY = arc4random_uniform(UInt32(size.height))
+        
+        while ((randomX > UInt32((self.size.width/2 - 250))) && (randomX < UInt32((self.size.width/2 + 250)))) {
+            randomX = arc4random_uniform(UInt32(size.width))
+        }
+        
+        // load the monster image
+        var monster = SKSpriteNode()
+        
+        if(randomX > UInt32(self.size.width/2)){
+            monster = SKSpriteNode(imageNamed: "monster_right")
+        }else{
+            monster = SKSpriteNode(imageNamed: "monster_left")
+        }
+        
+        monster.position = CGPoint(x: CGFloat(randomX), y: CGFloat(randomY))
+        monster.physicsBody?.isDynamic = true
+        monster.physicsBody?.affectedByGravity = false
+        monster.physicsBody?.allowsRotation = false
+        
+        // put monster on screen
+        addShapeToMonster(mons: monster)
+        addChild(monster)
+        
+        self.monsters.append(monster)
+    }
+    
+    
+    // Add Shape To Monster
+    func addShapeToMonster(mons: SKSpriteNode){
+        
+        
+    }
+    
+    
+    
+    
+    // UPDATE THINGS
+    override func update(_ currentTime: TimeInterval) {
+        
+        // Initialize _lastUpdateTime if it has not already been
+        if (self.lastUpdateTime == 0) {
+            self.lastUpdateTime = currentTime
+        }
+        
+        
+        // Calculate time since last update
+        let dt = currentTime - self.lastUpdateTime
+        
+        // HINT: This code prints "Hello world" every 5 seconds
+        if (dt > 5) {
+            self.addMonster()
+            self.lastUpdateTime = currentTime
+        }
+        
+        
+        // Monster follows player
+        let location = self.player.position
+        
+        for mons in self.monsters {
+            //Aim
+            let dx = (location.x) - mons.position.x
+            let dy = (location.y) - mons.position.y
+            let angle = atan2(dy, dx)
+            
+            mons.zRotation = angle - 3 * .pi/2
+            
+            //Seek
+            let velocityX = cos(angle) * CGFloat(self.monsterSpeed)
+            let velocityY = sin(angle) * CGFloat(self.monsterSpeed)
+            
+            mons.position.x += velocityX
+            mons.position.y += velocityY
+        }
+        
+    }
+    
+    
 }
 
 
