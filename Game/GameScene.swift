@@ -349,6 +349,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             self.scoreLabel.text = "0\(gameScore)"
         }else{
             self.scoreLabel.text = "\(gameScore)"
+            
+            // Game Over scene
+            let scene = SKScene(fileNamed: "GameWin")!
+            let transition = SKTransition.flipVertical(withDuration: 2)
+            self.view?.presentScene(scene, transition: transition)
+            
         }
     }
     
