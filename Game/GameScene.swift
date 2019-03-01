@@ -375,13 +375,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             msg.fontColor = UIColor.cyan
     
             // Not working as it suppose to
-//            let scene = GameScene(fileNamed: "GameScene")!
-//            let transition = SKTransition.flipVertical(withDuration: 2)
-//            self.view?.presentScene(scene, transition: transition)
+            let scene = SKScene(fileNamed: "GameOver")!
+            let transition = SKTransition.flipVertical(withDuration: 2)
+            self.view?.presentScene(scene, transition: transition)
             
-            // So I wrote this code
-            self.restartGame()
-
         }
     }
     
