@@ -214,9 +214,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         
         monster.position = CGPoint(x: CGFloat(randomX), y: CGFloat(randomY))
+        monster.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: monster.size.width, height: monster.size.height))
         monster.physicsBody?.isDynamic = true
         monster.physicsBody?.affectedByGravity = false
         monster.physicsBody?.allowsRotation = false
+        
         
         // put monster on screen
         addShapeToMonster(mons: monster)
