@@ -12,12 +12,15 @@ import GameplayKit
 class GameScene: SKScene,SKPhysicsContactDelegate {
     
     // GAME SPRITES VARIABLES
+    var scoreLabel = SKLabelNode()
+    var livesLabel = SKLabelNode()
     var monsterSpeed = 0.8
     var monsters_shape = [String: SKShapeNode]()
     var monsters_body = [String: SKSpriteNode]()
     var monsterShapes:[SKSpriteNode] = []
     var shapes:[String] = ["hLine", "vLine", "upperBoom", "lowerBoom"]
     var player = SKSpriteNode()
+    
     
     
     // CANVAS VARIABLES
@@ -34,6 +37,24 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
      
         // Background
         backgroundColor = UIColor.white
+        
+        
+        // Game Stats Reference
+        self.scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
+        self.livesLabel = self.childNode(withName: "livesLabel") as! SKLabelNode
+        
+        
+        if(gameScore < 10){
+            self.scoreLabel.text = "0\(gameScore)"
+        }else{
+            self.scoreLabel.text = "\(gameScore)"
+        }
+       
+        if(gameLives < 10){
+            self.livesLabel.text = "0\(gameLives)"
+        }else{
+            self.livesLabel.text = "\(gameLives)"
+        }
         
         
         // Get player reference
