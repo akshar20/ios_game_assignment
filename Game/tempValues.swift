@@ -11,4 +11,4 @@ import Foundation
 public var gameScore = 0
 public var gameLevel = 1
 public var gameLives = 1
-public var gameRunning = true
+public var gameRunning = false

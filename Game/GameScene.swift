@@ -587,7 +587,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         let dt = currentTime - self.lastUpdateTime
         
         // HINT: This code prints "Hello world" every 5 seconds
-        if (dt > 5) {
+        if (dt > 3) {
             self.addMonster()
             self.lastUpdateTime = currentTime
         }

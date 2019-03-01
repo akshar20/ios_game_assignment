@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let scene = GameScene(fileNamed: "GameScene") else {
+        guard let scene = GameScene(fileNamed: "Base") else {
             return
         }
         
@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
         let skView = self.view as! SKView
         
         
-        skView.showsPhysics = true
+        skView.showsPhysics = false
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
