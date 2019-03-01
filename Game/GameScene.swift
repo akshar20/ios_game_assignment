@@ -13,7 +13,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     // GAME SPRITES VARIABLES
     var monsterSpeed = 0.8
-    var monsters = [String: SKSpriteNode]()
+    var monsters_shape = [String: SKShapeNode]()
+    var monsters_body = [String: SKSpriteNode]()
     var monsterShapes:[SKSpriteNode] = []
     var shapes:[String] = ["hline", "vline", "upperBoom", "lowerBoom"]
     var player = SKSpriteNode()
@@ -235,7 +236,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         if(randShape == "hline"){
             
             let start = CGPoint(x: mons.position.x, y: mons.position.y + 50)
-            let end = CGPoint(x: mons.position.x + 200, y:mons.position.y + 50)
+            let end = CGPoint(x: mons.position.x + 100, y:mons.position.y + 50)
             
             let hLine = SKShapeNode()
             let pathToDraw = CGMutablePath()
@@ -243,10 +244,17 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             pathToDraw.addLine(to: end)
             hLine.path = pathToDraw
             hLine.strokeColor = SKColor.red
+            hLine.lineWidth = 20
+            hLine.glowWidth = 1.0
+            hLine.physicsBody?.affectedByGravity = false
+            hLine.physicsBody?.isDynamic = false
             addChild(hLine)
             addChild(mons)
-         
-            self.monsters[randShape] = mons
+            
+            
+            // Adding shape and monster to array
+            self.monsters_shape[randShape] = hLine
+            self.monsters_body[randShape] = mons
         
         }else if(randShape == "vline"){
             
@@ -289,20 +297,24 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Monster follows player
         let location = self.player.position
         
-        for (_,mons) in self.monsters {
+        // Move monster
+        for (key,mons_body) in self.monsters_body {
             //Aim
-            let dx = (location.x) - mons.position.x
-            let dy = (location.y) - mons.position.y
+            let dx = (location.x) - mons_body.position.x
+            let dy = (location.y) - mons_body.position.y
             let angle = atan2(dy, dx)
             
-            mons.zRotation = angle - 3 * .pi/2
+            mons_body.zRotation = angle - 3 * .pi/2
             
             //Seek
             let velocityX = cos(angle) * CGFloat(self.monsterSpeed)
             let velocityY = sin(angle) * CGFloat(self.monsterSpeed)
             
-            mons.position.x += velocityX
-            mons.position.y += velocityY
+            self.monsters_shape[key]?.position.x += velocityX
+            self.monsters_shape[key]?.position.y += velocityY
+            
+            mons_body.position.x += velocityX
+            mons_body.position.y += velocityY
         }
         
     }
