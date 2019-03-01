@@ -137,13 +137,42 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Checking for triangles (Condition: upper/lower corner of triangle has to be 25% of grater/lower)
         if(midy > y1 && midy > y2){
             if(midy > (y2 + (y2*0.25))){
-                print("PREDICTED: Upper Triangle")
+                print("PREDICTED: Upper Boomerang")
                 
+                // Remove Monster Shape
+                for (key, val) in self.monsters_shape{
+                    
+                    if(key == "upperBoom"){
+                    
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster Body
+                for (key, val) in self.monsters_body{
+                    
+                    if(key == "upperBoom"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                      
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster from Dictionary
+                self.monsters_shape.removeValue(forKey: "upperBoom")
+                self.monsters_body.removeValue(forKey: "upperBoom")
             }
             
         }else if(midy < y1 && midy < y2){
             if(midy < (y2 + (y2*0.25))){
-                print("PREDICTED: Lower Triangle")
+                print("PREDICTED: Lower Boomerangs")
+                
             }
         
             
@@ -151,10 +180,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }else{
             if(differenceX > differenceY){
                 print("PREDICTED: Horizontal Line")
+               
                 
             }else if(differenceX <= differenceY){
                 print("PRIDICTED: Verticle Line")
-                
+               
             }
         }
         
@@ -236,7 +266,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     // Add Shape To Monster
     func addShapeToMonster(mons: SKSpriteNode){
     
-        let randShape = self.shapes.randomElement() as! String
+         let randShape = "upperBoom"
+        //let randShape = self.shapes.randomElement()! as String
         
         
         if(randShape == "hline"){
