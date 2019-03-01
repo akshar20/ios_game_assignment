@@ -188,6 +188,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 // Remove Monster from Dictionary
                 self.monsters_shape.removeValue(forKey: "upperBoom")
                 self.monsters_body.removeValue(forKey: "upperBoom")
+                
+                // Increase Game Score
+                increaseGameScore()
+               
             }
             
         }else if(midy < y1 && midy < y2){
@@ -222,6 +226,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 // Remove Monster from Dictionary
                 self.monsters_shape.removeValue(forKey: "lowerBoom")
                 self.monsters_body.removeValue(forKey: "lowerBoom")
+                
+                
+                // Increase Game Score
+                increaseGameScore()
             }
         
             
@@ -259,7 +267,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 // Remove Monster from Dictionary
                 self.monsters_shape.removeValue(forKey: "hLine")
                 self.monsters_body.removeValue(forKey: "hLine")
-               
+                
+                // Increase Game Score
+                increaseGameScore()
                 
             }else if(differenceX <= differenceY){
                 print("PRIDICTED: Verticle Line")
@@ -292,11 +302,25 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 // Remove Monster from Dictionary
                 self.monsters_shape.removeValue(forKey: "vLine")
                 self.monsters_body.removeValue(forKey: "vLine")
-               
+                
+                
+                // Increase Game Score
+                increaseGameScore()
             }
         }
         
+    }
+    
+    
+    // INCREASES GAME SCORE BY 1
+    func increaseGameScore(){
+        gameScore += 1
         
+        if(gameScore < 10){
+            self.scoreLabel.text = "0\(gameScore)"
+        }else{
+            self.scoreLabel.text = "\(gameScore)"
+        }
     }
     
     
