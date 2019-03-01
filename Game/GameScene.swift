@@ -365,10 +365,25 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             }
         }else{
             
-            //gameOver()
+            self.scoreLabel.text = "\(gameScore)"
+            self.livesLabel.text = "00"
+            
+            let msg = SKLabelNode(text: "GAME OVER!")
+            msg.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+            msg.fontSize = 120
+            msg.fontName = "Noteworthy-Bold"
+            msg.fontColor = UIColor.cyan
+    
+            // Not working as it suppose to
+//            let scene = GameScene(fileNamed: "GameScene")!
+//            let transition = SKTransition.flipVertical(withDuration: 2)
+//            self.view?.presentScene(scene, transition: transition)
+            
+            // So I wrote this code
+            self.restartGame()
+
         }
     }
-    
     
     @objc func restartGame() {
         let scene = GameScene(fileNamed:"GameScene")

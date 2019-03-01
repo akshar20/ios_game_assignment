@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B2224DB2229CDBC00E057AF /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B2224DA2229CDBC00E057AF /* GameOver.sks */; };
 		9B28CCEF2225835500629347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28CCEE2225835500629347 /* AppDelegate.swift */; };
 		9B28CCF12225835500629347 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCF02225835500629347 /* GameScene.sks */; };
 		9B28CCF32225835500629347 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCF22225835500629347 /* Actions.sks */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B2224DA2229CDBC00E057AF /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		9B28CCEB2225835500629347 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B28CCEE2225835500629347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B28CCF02225835500629347 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				9B28CCEE2225835500629347 /* AppDelegate.swift */,
 				9B28CCF02225835500629347 /* GameScene.sks */,
+				9B2224DA2229CDBC00E057AF /* GameOver.sks */,
 				9B28CCF22225835500629347 /* Actions.sks */,
 				9B28CCF42225835500629347 /* GameScene.swift */,
 				9B28CCF62225835500629347 /* GameViewController.swift */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B59845122283EA80053EBE5 /* player.atlas in Resources */,
+				9B2224DB2229CDBC00E057AF /* GameOver.sks in Resources */,
 				9B28CCFA2225835500629347 /* Main.storyboard in Resources */,
 				9B28CCF12225835500629347 /* GameScene.sks in Resources */,
 				9B28CCFC2225835700629347 /* Assets.xcassets in Resources */,

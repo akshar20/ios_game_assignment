@@ -10,5 +10,5 @@ import Foundation
 
 public var gameScore = 0
 public var gameLevel = 1
-public var gameLives = 5
+public var gameLives = 1
 public var gameRunning = true
