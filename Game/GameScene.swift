@@ -235,7 +235,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         if(randShape == "hline"){
             
-            let start = CGPoint(x: mons.position.x, y: mons.position.y + 50)
+            let start = CGPoint(x: mons.position.x - 100, y: mons.position.y + 50)
             let end = CGPoint(x: mons.position.x + 100, y:mons.position.y + 50)
             
             let hLine = SKShapeNode()
@@ -246,8 +246,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             hLine.strokeColor = SKColor.red
             hLine.lineWidth = 20
             hLine.glowWidth = 1.0
-            hLine.physicsBody?.affectedByGravity = false
-            hLine.physicsBody?.isDynamic = false
+            hLine.name = "shape"
+            hLine.physicsBody?.isDynamic = true
             addChild(hLine)
             addChild(mons)
             
