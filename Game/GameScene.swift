@@ -14,7 +14,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     // GAME SPRITES VARIABLES
     var scoreLabel = SKLabelNode()
     var livesLabel = SKLabelNode()
-    var monsterSpeed = 0.8
+    var monsterSpeed = 1.4
     var monsters_shape = [String: SKShapeNode]()
     var monsters_body = [String: SKSpriteNode]()
     var monsterShapes:[SKSpriteNode] = []
@@ -353,34 +353,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     
     
-    // INCREASES GAME SCORE BY 1
-    func decreaseGameLives(){
-        gameLives -= 1
-        
-        if(gameLives > 0){
-            if(gameLives < 10){
-                self.livesLabel.text = "0\(gameLives)"
-            }else{
-                self.livesLabel.text = "\(gameLives)"
-            }
-        }else{
-            
-            self.scoreLabel.text = "\(gameScore)"
-            self.livesLabel.text = "00"
-            
-            let msg = SKLabelNode(text: "GAME OVER!")
-            msg.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-            msg.fontSize = 120
-            msg.fontName = "Noteworthy-Bold"
-            msg.fontColor = UIColor.cyan
-    
-            // Not working as it suppose to
-            let scene = SKScene(fileNamed: "GameOver")!
-            let transition = SKTransition.flipVertical(withDuration: 2)
-            self.view?.presentScene(scene, transition: transition)
-            
-        }
-    }
     
     @objc func restartGame() {
         let scene = GameScene(fileNamed:"GameScene")
@@ -409,19 +381,35 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
             
             // Restart the game
-            decreaseGameLives()
+            gameLives -= 1
+            if(gameLives > 0){
+                
+                if(gameLives < 10){
+                    self.livesLabel.text = "0\(gameLives)"
+                }else{
+                    self.livesLabel.text = "\(gameLives)"
+                }
+                
+                let msg = SKLabelNode(text: "Oops... Be Careful!")
+                msg.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+                msg.fontSize = 120
+                msg.fontName = "Noteworthy-Bold"
+                msg.fontColor = UIColor.cyan
+                addChild(msg)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                    self.restartGame()
+                })
+            }else{
+                    // Game Over scene
+                    let scene = SKScene(fileNamed: "GameOver")!
+                    let transition = SKTransition.flipVertical(withDuration: 2)
+                    self.view?.presentScene(scene, transition: transition)
+            }
             
             
-            let msg = SKLabelNode(text: "Oops... Be Careful!")
-            msg.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-            msg.fontSize = 120
-            msg.fontName = "Noteworthy-Bold"
-            msg.fontColor = UIColor.cyan
-            addChild(msg)
-        
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                self.restartGame()
-            })
+            
+            
             
         }
     }
