@@ -310,19 +310,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         
     }
-    
-    
-    // INCREASES GAME SCORE BY 1
-    func increaseGameScore(){
-        gameScore += 1
-        
-        if(gameScore < 10){
-            self.scoreLabel.text = "0\(gameScore)"
-        }else{
-            self.scoreLabel.text = "\(gameScore)"
-        }
-    }
-    
+
     
     //**********************************************************************************************
     //******************************** CANVAS CODE ENDS ********************************************
@@ -348,6 +336,54 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     
     
+    // *********** *********** *********** *********** *********** *********** ***********
+    //  ********* GAME CORE FUNCTIONS (WIN, LOSE, RESTART, MOVE TO NEXT LEVEL)  **********
+    // *********** *********** *********** *********** *********** *********** ***********
+    
+    
+    // INCREASES GAME SCORE BY 1
+    func increaseGameScore(){
+        gameScore += 1
+        
+        if(gameScore < 10){
+            self.scoreLabel.text = "0\(gameScore)"
+        }else{
+            self.scoreLabel.text = "\(gameScore)"
+        }
+    }
+    
+    
+    // INCREASES GAME SCORE BY 1
+    func decreaseGameLives(){
+        gameLives -= 1
+        
+        if(gameLives > 0){
+            if(gameLives < 10){
+                self.livesLabel.text = "0\(gameLives)"
+            }else{
+                self.livesLabel.text = "\(gameLives)"
+            }
+        }else{
+            
+            //gameOver()
+        }
+    }
+    
+    
+    @objc func restartGame() {
+        let scene = GameScene(fileNamed:"GameScene")
+        scene!.scaleMode = scaleMode
+        view?.presentScene(scene)
+    }
+    
+    
+    // *********** *********** *********** *********** *********** *********** ***********
+    //  ***** GAME CORE FUNCTIONS (WIN, LOSE, RESTART, MOVE TO NEXT LEVEL)  ENDS *********
+    // *********** *********** *********** *********** *********** *********** ***********
+    
+    
+    
+    
     
     
     // COLLISION
@@ -358,7 +394,23 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         // Check for hit
         if(node1?.name == "player" || node2?.name == "player"){
-            print("Collision Detected")
+            
+            
+            // Restart the game
+            decreaseGameLives()
+            
+            
+            let msg = SKLabelNode(text: "Oops... Be Careful!")
+            msg.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+            msg.fontSize = 120
+            msg.fontName = "Noteworthy-Bold"
+            msg.fontColor = UIColor.cyan
+            addChild(msg)
+        
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                self.restartGame()
+            })
+            
         }
     }
     
@@ -382,7 +434,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }else{
             monster = SKSpriteNode(imageNamed: "monster_left")
         }
-        
+
         monster.position = CGPoint(x: CGFloat(randomX), y: CGFloat(randomY))
         monster.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: monster.size.width, height: monster.size.height))
         monster.physicsBody?.isDynamic = true
