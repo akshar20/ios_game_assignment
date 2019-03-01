@@ -16,7 +16,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var monsters_shape = [String: SKShapeNode]()
     var monsters_body = [String: SKSpriteNode]()
     var monsterShapes:[SKSpriteNode] = []
-    var shapes:[String] = ["hline", "vline", "upperBoom", "lowerBoom"]
+    var shapes:[String] = ["hLine", "vLine", "upperBoom", "lowerBoom"]
     var player = SKSpriteNode()
     
     
@@ -173,6 +173,34 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             if(midy < (y2 + (y2*0.25))){
                 print("PREDICTED: Lower Boomerangs")
                 
+                // Remove Monster Shape
+                for (key, val) in self.monsters_shape{
+                    
+                    if(key == "lowerBoom"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster Body
+                for (key, val) in self.monsters_body{
+                    
+                    if(key == "lowerBoom"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster from Dictionary
+                self.monsters_shape.removeValue(forKey: "lowerBoom")
+                self.monsters_body.removeValue(forKey: "lowerBoom")
             }
         
             
@@ -180,10 +208,69 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }else{
             if(differenceX > differenceY){
                 print("PREDICTED: Horizontal Line")
+                
+                
+                // Remove Monster Shape
+                for (key, val) in self.monsters_shape{
+                    
+                    if(key == "hLine"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster Body
+                for (key, val) in self.monsters_body{
+                    
+                    if(key == "hLine"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster from Dictionary
+                self.monsters_shape.removeValue(forKey: "hLine")
+                self.monsters_body.removeValue(forKey: "hLine")
                
                 
             }else if(differenceX <= differenceY){
                 print("PRIDICTED: Verticle Line")
+                
+                // Remove Monster Shape
+                for (key, val) in self.monsters_shape{
+                    
+                    if(key == "vLine"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster Body
+                for (key, val) in self.monsters_body{
+                    
+                    if(key == "vLine"){
+                        
+                        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+                        let remove        = SKAction.run({ val.removeFromParent }())
+                        let sequence      = SKAction.sequence([fadeOutAction, remove])
+                        
+                        val.run(sequence)
+                    }
+                }
+                
+                // Remove Monster from Dictionary
+                self.monsters_shape.removeValue(forKey: "vLine")
+                self.monsters_body.removeValue(forKey: "vLine")
                
             }
         }
@@ -266,11 +353,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     // Add Shape To Monster
     func addShapeToMonster(mons: SKSpriteNode){
     
-         let randShape = "upperBoom"
-        //let randShape = self.shapes.randomElement()! as String
+        
+        let randShape = self.shapes.randomElement()! as String
         
         
-        if(randShape == "hline"){
+        if(randShape == "hLine"){
             
             let start = CGPoint(x: mons.position.x - 100, y: mons.position.y + 50)
             let end = CGPoint(x: mons.position.x + 100, y:mons.position.y + 50)
@@ -293,7 +380,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             self.monsters_shape[randShape] = hLine
             self.monsters_body[randShape] = mons
         
-        }else if(randShape == "vline"){
+        }else if(randShape == "vLine"){
             
             let start = CGPoint(x: mons.position.x, y: mons.position.y + 50)
             let end = CGPoint(x: mons.position.x, y:mons.position.y + 200)
