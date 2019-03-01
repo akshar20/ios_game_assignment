@@ -13,8 +13,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     
     // REFERENCE TO SPRITES
-    var monster = SKSpriteNode()
-    var player = SKSpriteNode()
+  //  var monster = SKSpriteNode()
+ //   var player = SKSpriteNode()
     
     // CANVAS VARIABLES
     var pathArray = [CGPoint]()
@@ -25,8 +25,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         
         // Getting reference to player and monsters
-        self.monster = self.childNode(withName: "monster") as! SKSpriteNode
-        self.player = self.childNode(withName: "player") as! SKSpriteNode
+//        self.monster = self.childNode(withName: "monster") as! SKSpriteNode
+    //    self.player = self.childNode(withName: "player") as! SKSpriteNode
         
         
         // Double Tap Recognizer

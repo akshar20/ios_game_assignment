@@ -16,7 +16,6 @@
 		9B28CCFC2225835700629347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFB2225835700629347 /* Assets.xcassets */; };
 		9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFD2225835700629347 /* LaunchScreen.storyboard */; };
 		9B59845122283EA80053EBE5 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9B59845022283EA80053EBE5 /* player.atlas */; };
-		9B598453222840F30053EBE5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B598452222840F30053EBE5 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		9B28CCFE2225835700629347 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B28CD002225835700629347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B59845022283EA80053EBE5 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
-		9B598452222840F30053EBE5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 				9B28CCF82225835500629347 /* Main.storyboard */,
 				9B28CCFB2225835700629347 /* Assets.xcassets */,
 				9B59845022283EA80053EBE5 /* player.atlas */,
-				9B598452222840F30053EBE5 /* background.png */,
 				9B28CCFD2225835700629347 /* LaunchScreen.storyboard */,
 				9B28CD002225835700629347 /* Info.plist */,
 			);
@@ -142,7 +139,6 @@
 				9B28CCF12225835500629347 /* GameScene.sks in Resources */,
 				9B28CCFC2225835700629347 /* Assets.xcassets in Resources */,
 				9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */,
-				9B598453222840F30053EBE5 /* background.png in Resources */,
 				9B28CCF32225835500629347 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
