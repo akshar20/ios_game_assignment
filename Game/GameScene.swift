@@ -469,8 +469,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             while(randShape == self.lastAddedSymbol){
                 randShape = self.shapes.randomElement()! as String
             }
-            
-            // add here
+            self.lastAddedSymbol = randShape
         }
         
         
