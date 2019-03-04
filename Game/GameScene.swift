@@ -336,7 +336,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches{ self.touchUp(atPoint: t.location(in: self))}
         
-
+        // PAINT MUSIC
+        let paintSound = SKAction.playSoundFileNamed("paint", waitForCompletion: false)
+        run(paintSound)
     }
     
     
