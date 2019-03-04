@@ -22,6 +22,7 @@
 		9B28CCFF2225835700629347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B28CCFD2225835700629347 /* LaunchScreen.storyboard */; };
 		9B59845122283EA80053EBE5 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9B59845022283EA80053EBE5 /* player.atlas */; };
 		9B9CE881222D62BE00815998 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B9CE880222D62BE00815998 /* backgroundMusic.mp3 */; };
+		9B9CE8C6222D8FCE00815998 /* paint.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B9CE8C5222D8FCE00815998 /* paint.mp3 */; };
 		9BAA4FF5222997D200F23F12 /* tempValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAA4FF4222997D200F23F12 /* tempValues.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		9B28CD002225835700629347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B59845022283EA80053EBE5 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 		9B9CE880222D62BE00815998 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
+		9B9CE8C5222D8FCE00815998 /* paint.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = paint.mp3; sourceTree = "<group>"; };
 		9BAA4FF4222997D200F23F12 /* tempValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				9B28CCF62225835500629347 /* GameViewController.swift */,
 				9B28CCF82225835500629347 /* Main.storyboard */,
 				9B9CE880222D62BE00815998 /* backgroundMusic.mp3 */,
+				9B9CE8C5222D8FCE00815998 /* paint.mp3 */,
 				9B28CCFB2225835700629347 /* Assets.xcassets */,
 				9B59845022283EA80053EBE5 /* player.atlas */,
 				9B28CCFD2225835700629347 /* LaunchScreen.storyboard */,
@@ -159,6 +162,7 @@
 				9B2224E52229E23100E057AF /* GameWin.sks in Resources */,
 				9B2224E32229E0B600E057AF /* GameOver.sks in Resources */,
 				9B2224DD2229D95800E057AF /* Base.sks in Resources */,
+				9B9CE8C6222D8FCE00815998 /* paint.mp3 in Resources */,
 				9B28CCFA2225835500629347 /* Main.storyboard in Resources */,
 				9B28CCF12225835500629347 /* GameScene.sks in Resources */,
 				9B28CCFC2225835700629347 /* Assets.xcassets in Resources */,
