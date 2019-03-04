@@ -29,15 +29,18 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     // TIME TRACKING VARIABLES
     private var lastUpdateTime : TimeInterval = 0
-    
 
+    
+    
     override func didMove(to view: SKView) {
         
         self.physicsWorld.contactDelegate = self
      
-        // Background
-        backgroundColor = UIColor.white
+        // BACKGROUND MUSIC
+        let backSound = SKAction.playSoundFileNamed("backgroundMusic", waitForCompletion: false)
+        run(backSound)
         
+
         
         // Game Stats Reference
         self.scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
@@ -158,7 +161,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Checking for triangles (Condition: upper/lower corner of triangle has to be 25% of grater/lower)
         if(midy > y1 && midy > y2){
             if(midy > (y2 + (y2*0.25))){
-                print("PREDICTED: Upper Boomerang")
+                //print("PREDICTED: Upper Boomerang")
                 
                 // Remove Monster Shape
                 for (key, val) in self.monsters_shape{
@@ -196,7 +199,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
         }else if(midy < y1 && midy < y2){
             if(midy < (y2 + (y2*0.25))){
-                print("PREDICTED: Lower Boomerangs")
+                //print("PREDICTED: Lower Boomerangs")
                 
                 // Remove Monster Shape
                 for (key, val) in self.monsters_shape{
@@ -236,7 +239,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Checking for lines
         }else{
             if(differenceX > differenceY){
-                print("PREDICTED: Horizontal Line")
+                //print("PREDICTED: Horizontal Line")
                 
                 
                 // Remove Monster Shape
@@ -272,7 +275,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 increaseGameScore()
                 
             }else if(differenceX <= differenceY){
-                print("PRIDICTED: Verticle Line")
+                //print("PRIDICTED: Verticle Line")
                 
                 // Remove Monster Shape
                 for (key, val) in self.monsters_shape{
