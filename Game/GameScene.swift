@@ -19,6 +19,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var monsters_body = [String: SKSpriteNode]()
     var monsterShapes:[SKSpriteNode] = []
     var shapes:[String] = ["hLine", "vLine", "upperBoom", "lowerBoom"]
+    var lastAddedSymbol = ""
     var player = SKSpriteNode()
     
     
@@ -460,7 +461,17 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     func addShapeToMonster(mons: SKSpriteNode){
     
         
-        let randShape = self.shapes.randomElement()! as String
+        var randShape = self.shapes.randomElement()! as String
+        
+        if(self.lastAddedSymbol == ""){
+            self.lastAddedSymbol = randShape
+        }else{
+            while(randShape == self.lastAddedSymbol){
+                randShape = self.shapes.randomElement()! as String
+            }
+            self.lastAddedSymbol = randShape
+        }
+        
         
         
         if(randShape == "hLine"){
